@@ -1,4 +1,5 @@
 from room import Room
+from player import Player
 
 # Declare all the rooms
 
@@ -39,8 +40,25 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 
+bayron = Player('outside')
+
+movements = ['n', 'e', 's', 'w']
+leave_game = 'q'
 # Write a loop that:
 #
+x = True
+while x:
+    player_move = input('~~> ')
+    if player_move == leave_game:
+        print('Goodbye!!!')
+        break
+    elif player_move == movements[0]:
+        bayron.player_room == 'foyer'
+        print('you are in the foyer')
+    elif player_move == str(movements[1]) or player_move == str(movements[2]) or player_move == str(movements[3]):
+            print('Sorry, wrong way')
+
+
 # * Prints the current room name
 # * Prints the current description (the textwrap module might be useful here).
 # * Waits for user input and decides what to do.
