@@ -40,23 +40,73 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 
-bayron = Player('outside')
+player = Player(input('You name: '), room['outside'])
 
-movements = ['n', 'e', 's', 'w']
-leave_game = 'q'
+print(f"Hello, {player.name}! You are in {player.player_room}. Come on in!")
+
+# movements = ['n', 'e', 's', 'w']
+# leave_game = 'q'
 # Write a loop that:
 #
-x = True
-while x:
-    player_move = input('~~> ')
-    if player_move == leave_game:
-        print('Goodbye!!!')
-        break
-    elif player_move == movements[0]:
-        bayron.player_room == 'foyer'
-        print('you are in the foyer')
-    elif player_move == str(movements[1]) or player_move == str(movements[2]) or player_move == str(movements[3]):
-            print('Sorry, wrong way')
+ 
+while True:
+    cmd = input("-> ").lower()
+    if cmd in ['n', 's', 'e', 'w']:
+        player.move(cmd)
+    elif cmd == "q":
+        print("Goodbye!")
+        exit()
+    else: 
+        print('Sorry, try usimg n, s, e, w')
+
+
+
+
+
+# while True:
+#     player_move = input('~~> ')
+#     if player_move == leave_game:
+#         print('Goodbye!!!')
+#         break
+#     if bayron.player_room is room['outside']:
+#         if player_move == movements[0]:
+#             bayron.player_room = room['foyer']
+#             print(f"{room['outside'].n_to.name} \n {room['outside'].n_to.description}")
+#         else: 
+#             print('sorry, wrong way!')
+#     elif bayron.player_room is room['foyer']:
+#         if player_move == str(movements[2]):
+#             bayron.player_room = room['outside']
+#             print(f"{room['foyer'].s_to.name} \n {room['foyer'].s_to.description}")
+#         elif player_move == str(movements[0]):
+#             bayron.player_room = room['overlook']
+#             print(f"{room['foyer'].n_to.name} \n {room['foyer'].n_to.description}")
+#         elif player_move == str(movements[1]):
+#             bayron.player_room = room['narrow']
+#             print(f"{room['foyer'].e_to.name} \n  {room['foyer'].e_to.description}")
+#         else:
+#             print('Sorry, wrong way!')
+#     elif bayron.player_room is room['overlook']:
+#         if player_move == str(movements[2]):
+#             bayron.player_room = room['foyer']
+#             print(f"{room['overlook'].s_to.name} \n  {room['overlook'].s_to.description}")
+#         else:
+#             print('Sorry, wrong way!')
+#     elif bayron.player_room is room['narrow']:
+#         if player_move == str(movements[0]):
+#             bayron.player_room = room['treasure']
+#             print(f"{room['narrow'].n_to.name} \n  {room['narrow'].n_to.description}")
+#         elif player_move == str(movements[3]):
+#             bayron.player_room = room['foyer']
+#             print(f"{room['narrow'].w_to.name} \n  {room['narrow'].w_to.description}")
+#         else:
+#             print('Sorry, wrong way!')
+#     elif bayron.player_room is room['treasure']:
+#         if player_move == str(movements[2]):
+#             bayron.player_room = room['narrow']
+#             print(f"{room['treasure'].s_to.name} \n  {room['treasure'].s_to.description}")
+#         else:
+#             print('Sorry, wrong way!')
 
 
 # * Prints the current room name
